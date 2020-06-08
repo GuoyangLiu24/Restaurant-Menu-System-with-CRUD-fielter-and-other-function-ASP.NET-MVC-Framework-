@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet"
+          asp-href-include="/lib/bootstrap/**/*.min.css"
+          asp-href-exclude="**/*-reboot*,**/*-grid*" />
+    <link href="~/css/AssignmentStyles.css" rel="stylesheet" />
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <title>@ViewBag.Title</title>
+</head>
+<body class="body">
+    <div id="allPage">
+        <div class="header">
+            <img src="~/images/bannerbanner.jpg" alt="banner" width="980">
+        </div>
+
+        <div class="navbar">
+            <a asp-controller="Home" asp-action="index"><i class="fa fa-fw fa-home"></i>   Home</a>
+            <a asp-controller="Account" asp-action="Login"><i class="fa fa-fw fa-user"></i>   Login</a>
+            <a href="mailto:sanmerge@gmail.com"><i class="fa fa-fw fa-envelope"></i>   Contact</a>
+            <a asp-controller="Home" asp-action="RecipeList"><i class="fa fa-align-justify"></i>   Menu</a>
+        </div>
+
+        <div id="article" >
+            <div class="p-4 row" style="width:100%">
+                <div class="col" id="adminTitle"><h4>@ViewBag.Title</h4></div>
+                <div class="col-2" id="adminLogout">
+                    <a class="btn btn-sm btn-primary" style="width:100%;" asp-action="Logout" asp-controller="Account"><i class="fa fa-sign-out"></i><span class="button-text">Log out</span></a>
+                    <br>
+                </div>
+            </div>
+            @if (TempData["message"] != null)
+            {
+                <div class="alert alert-success mt-1">@TempData["message"]</div>
+            }
+            @RenderBody()
+        </div>
+
+       
+
+    </div>
+    <footer>
+        <br>
+        <p>Please contact us if you have any questions.</p>
+        <p>Our Email: <a href="mailto:sanmerge@gmail.com">sanmerge@gmail.com</a></p>
+        <p id="copyright">&nbsp;&copy;Copyright Group1 -Centennial College- COMP231-Team Project Assignment</p>
+    </footer>
+</body>
+</html>

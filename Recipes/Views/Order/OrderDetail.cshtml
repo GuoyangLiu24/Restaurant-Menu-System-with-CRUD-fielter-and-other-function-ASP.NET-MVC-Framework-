@@ -1,0 +1,35 @@
+﻿@model FakeRepositoryItems
+@{
+    ViewBag.Title = "View Order";
+}
+
+<div class="panel-body">
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>ID Name</td>
+                    <td>Quantity</td>
+                    <td>Tax</td>
+                    <td>Price</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in Model.Items)
+                {
+               
+                    <tr>
+
+                        <td>@s.Id</td>
+                        <input type="hidden" name="Id" value="@s.Id" />
+                        <td> <input type="number" name="quantity" value="@s.Quantity" style=" width:100px" /></td>
+                        <td>13%</td>
+                        <td>@s.calculate()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-primary" style="width:300px;" asp-controller="Home" asp-action="RecipeList">Continue Shopping</a>
+         </div>
+</div>
+</div>

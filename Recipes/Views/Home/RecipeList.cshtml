@@ -1,0 +1,55 @@
+﻿@model RecipeListViewModel;
+@{
+    ViewBag.Title = "Recipe List";
+}
+
+<h1>List of our fantastic smoothy bowls</h1>
+<form asp-controller="Home" asp-action="RecipeList" method="post">
+    <table class="FilterTools">
+        <tr>
+            <td width="50%"><input type="text" name="searchingString" class="form-control" placeholder="Enter to search"></td>
+            <td width="20%">
+                <button type="submit" class="btn btn-sm btn-primary" width="100%">
+                    <i class="fa fa-fw fa-search"></i><span class="button-text">Search</span>
+                </button>
+            </td>
+            <td width="30%">
+                @Html.DropDownList("Category", new SelectList(Enum.GetValues(typeof(Recipes.Models.ViewModels.RecipeListViewModel.CategoryType))),
+                                     "Catergories", new { @class = "form-control glyphicon glyphicon-glass" })
+
+            </td>
+
+        </tr>
+    </table>
+</form>
+<table class="MenuTable">
+    <thead>
+        <tr>
+            <td width="20%">Food Name</td>
+            <td width="10%">Category</td>
+            <td width="50%">Ingredients</td>
+            <td width="10%">Price</td>
+            <td width="10%"></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model.Recipes)
+        {
+            <tr>
+                <td width="20%">@s.Name</td>
+                <td width="10%">@s.Category</td>
+                <td width="50%">@s.Ingredients</td>
+                <td width="10%">$ @s.Price </td>
+                <td width="10%"><a asp-action="ViewRecipe" asp-controller="Home" asp-route-id="@s.RecipeID">View Here</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div page-model="@Model.PagingInfo"
+     page-action="RecipeList"
+     page-classes-enabled="true"
+     page-class="btn"
+     page-class-normal="btn-secondary"
+     page-class-selected="btn-primary"></div>
+
+

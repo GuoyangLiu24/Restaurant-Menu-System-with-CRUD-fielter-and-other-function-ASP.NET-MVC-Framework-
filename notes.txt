@@ -1,0 +1,6 @@
+step1. delete recipes database
+step2. pm>: Update-Database -Context ApplicationDbContext
+
+
+
+System: Internet Explorer or Microsoft Edge

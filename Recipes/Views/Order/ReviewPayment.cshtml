@@ -1,0 +1,40 @@
+﻿@model FakeRepositoryOrder;
+
+<div>
+    <h4>Payments</h4>
+    <hr />
+    <dl class="dl-horizontal">
+    </dl>
+</div>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Order Date</td>
+                <td>User</td>
+                <td>Total After Tax (13%)</td>
+                <td>Detail:</td>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var s in Model.Orders)
+            {
+                
+                <tr>
+                        <td>@s.Oderdate</td>
+                        <td> @s.CustomerID</td>
+                        <td>@s.TotalPrice $CAD</td>
+                   
+
+                        <td>
+                            <a style="width:60px" asp-controller="Orders" asp-action="ViewDetail" asp-route-id="@s.ID" class="btn btn-danger btn-sm">View Detail</a>
+                      </td>
+                    </tr>
+                
+            }
+        </tbody>
+    </table>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

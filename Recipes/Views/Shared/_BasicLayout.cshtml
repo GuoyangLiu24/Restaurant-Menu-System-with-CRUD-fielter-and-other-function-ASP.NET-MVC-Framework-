@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="/css/AssignmentStyles.css" />
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
+
+
+</head>
+
+<body class="body">
+    <div id="allPage">
+        <div class="header">
+            <img src="~/images/bannerbanner.jpg" alt="banner" />
+        </div>
+
+        <div class="navbar">
+            <a asp-controller="Home" asp-action="index"><i class="fa fa-fw fa-home"></i> Home</a>
+            @Html.Partial("LoginPartial")
+            <a href="mailto:sanmerge@gmail.com"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+            <a asp-controller="Home" asp-action="RecipeList"><i class="fa fa-align-justify"></i> Menu</a>
+
+        </div>
+
+        <div id="article">
+            @RenderBody()
+        </div>
+
+
+
+
+    </div>
+    <footer>
+        <br>
+        <p>Please contact us if you have any questions.</p>
+        <p>Our Email: <a href="mailto:sanmerge@gmail.com">sanmerge@gmail.com</a></p>
+        <p id="copyright">&nbsp;&copy;Copyright Group1 -Centennial College- COMP231-Team Project Assignment</p>
+
+    </footer>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿@model Recipe
+@{
+    ViewBag.Title = "View Recipe";
+}
+    <div class="panel-body">
+        <div>
+            <form class="p-a-1"  asp-controller="Orders" asp-action="CartAdd" method="post">
+                <h2 align="center">@Model.Name</h2>
+
+
+                <img src="~/images/dish1.jpg" alt="dish1" width="300" height="300" style="margin: 0 auto;">
+                <br>
+                <input type="hidden" name="Id" value="@Model.RecipeID">
+                <h3>Ingredients:</h3>
+                <p>@Model.Ingredients</p>
+                <h3>Price:</h3>
+                <p>$ @Model.Price</p>
+                <input type="hidden" name="price" value="@Model.Price">
+
+                <div class="quantity" align="center">
+                    <div class="collapse">
+
+                        <button class="plus-btn" type="button" name="button">
+                            <img src="~/images/plus.svg" alt="" width="20" height="20" />
+                        </button>
+                    </div>
+                    <input type="number" name="quantity" value="1" style="text-align:center">
+                    <div class="collapse">
+                        <button class="minus-btn" type="button" name="button">
+                            <img src="~/images/minus.svg" alt="" width="20" height="20" />
+                        </button>
+                    </div>
+                </div>
+                <br>
+
+                <div class="text-center">
+                    <button class="btn btn-primary" style="width:300px;" type="submit" name="addPost">Add To Cart</button>
+
+                </div>
+                <br>
+                <div class="text-center">
+                    <a class="btn btn-primary" style="width:200px;" asp-controller="Home" asp-action="RecipeList">Back</a>
+                    <span>  <a class="btn btn-primary" style="width:300px;" asp-action="ReviewRecipe">Review this Recipe</a></span>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+

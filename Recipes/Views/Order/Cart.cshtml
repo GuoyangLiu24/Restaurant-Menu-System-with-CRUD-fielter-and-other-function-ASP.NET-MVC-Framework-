@@ -1,0 +1,53 @@
+﻿@model FakeRepositoryItems
+@{
+    ViewBag.Title = "View Order";
+}
+
+<div class="panel-body">
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>ID Name</td>
+                    <td>Quantity</td>
+                    <td>Tax</td>
+                    <td>Price</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in Model.Items)
+                {
+                <form asp-controller="Orders" asp-action="UpdateCart" method="post">
+                    <tr>
+
+                        <td>@s.ReceiptId</td>
+                        <input type="hidden" name="Id" value="@s.ReceiptId" />
+                        <td> <input type="number" name="quantity" value="@s.Quantity" style=" width:100px" /></td>
+                        <td>13%</td>
+                        <td>@s.calculate()</td>
+
+                        <td>
+
+                            <button class="btn btn-sm btn-warning" style=" width:50px" type="submit">update</button>
+
+
+
+
+                        </td>
+
+                        <td>
+                            <a style="width:60px" asp-controller="Orders" asp-action="DeleteRecipe" asp-route-id="@s.ReceiptId" class="btn btn-danger btn-sm">Delete</a>
+
+                        </td>
+                    </tr>
+                </form>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-primary" style="width:300px;" asp-controller="Home" asp-action="RecipeList">Continue Shopping</a>
+        <span><a class="btn btn-primary" style="width:300px;" asp-action="ReviewPayment">Order</a></span>
+    </div>
+</div>
+</div>
